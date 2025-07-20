@@ -1,10 +1,123 @@
 [
-  {
-    "titre": "Test 1",
-    "description": "Test",
-    "lienSite": "https://monprojet.com",
-    "lienGithub": "https://github.com/monrepo",
-    "image": "https://image.com/img.png",
-    "date": "2024-05-01"
-  }
+{
+        "titre": "Dashboard de projet",
+        "description": "Dashboard de projet est un tableau de bord centralisé où je regroupe et organise tous mes projets web les plus importants. C’est comme une bibliothèque interactive qui permet d’accéder facilement à chacun de mes travaux, avec une présentation claire pour suivre leur évolution et leur statut.",
+        "lienSite": "https://dashboard-de-projet.onrender.com/",
+        "lienGithub": "https://github.com/BleuDragonViolet/Dashboard-de-projet",
+        "image": "",
+        "date": "2025-07-20"
+    },
+
+    {
+        "titre": "Confession",
+        "description": "Confession est un site web interactif permettant aux utilisateurs de partager anonymement leurs pensées, secrets ou confessions. Il offre une plateforme simple et sécurisée pour s’exprimer librement, avec un design sobre favorisant la confidentialité et l’intimité.",
+        "lienSite": "https://bleudragonviolet.github.io/Confession/",
+        "lienGithub": "https://github.com/BleuDragonViolet/Confession",
+        "image": "",
+        "date": "2025-07-20"
+    },
+    {
+        "titre": "Juste Vide",
+        "description": "Juste Vide est un site minimaliste au design épuré, qui met en avant le concept de simplicité et d’espace vide. Sans distractions inutiles, il invite à une expérience visuelle et mentale apaisante, presque méditative, en jouant sur le vide et les espaces blancs.",
+        "lienSite": "https://bleudragonviolet.github.io/Juste-Vide/",
+        "lienGithub": "https://github.com/BleuDragonViolet/Juste-Vide",
+        "image": "",
+        "date": "2025-07-18"
+    },
+    {
+        "titre": "Map Mini Jeux Minecraft",
+        "description": "BDV Games est un site vitrine présentant une map Minecraft créée par mes soins, composée de plusieurs mini-jeux. Cette map offre une expérience ludique et variée pour les joueurs qui veulent s’amuser en solo ou en groupe avec des défis amusants dans l’univers Minecraft.",
+        "lienSite": "https://bleudragonviolet.github.io/BDV-Games/",
+        "lienGithub": "https://github.com/BleuDragonViolet",
+        "image": "",
+        "date": "2025-05-20"
+    },
+    {
+        "titre": "Maitrise le Web",
+        "description": "Maîtrise le Web par Evan est un site web éducatif et personnel qui propose des ressources, astuces et tutoriels pour apprendre et maîtriser le développement web. Idéal pour les débutants comme pour les passionnés souhaitant approfondir leurs compétences en HTML, CSS, JavaScript et plus encore, avec une approche claire et accessible.",
+        "lienSite": "https://bleudragonviolet.github.io/-Maitrise-le-Web-par-Evan-/",
+        "lienGithub": "https://github.com/BleuDragonViolet/-Maitrise-le-Web-par-Evan-",
+        "image": "",
+        "date": "2025-05-16"
+    },
+    {
+        "titre": "Snack",
+        "description": "Snack est un site web simple et ludique proposant une expérience interactive autour de petites animations ou jeux rapides. Parfait pour se divertir rapidement avec une interface légère et facile d’utilisation.",
+        "lienSite": "https://bleudragonviolet.github.io/snack/",
+        "lienGithub": "https://github.com/BleuDragonViolet/snack",
+        "image": "",
+        "date": "2025-05-09"
+    },
+    {
+        "titre": "Formulaire d'Inscription BTS",
+        "description": "Formulaire d’Inscription BTS est un site web simple et fonctionnel conçu pour faciliter l’inscription aux formations BTS. Il propose un formulaire clair et intuitif permettant de recueillir toutes les informations nécessaires des candidats. Idéal pour centraliser les demandes et simplifier le processus d’inscription en ligne.",
+        "lienSite": "https://bleudragonviolet.github.io/Formulaire-d-Inscription-BTS/",
+        "lienGithub": "https://github.com/BleuDragonViolet/Formulaire-d-Inscription-BTS",
+        "image": "",
+        "date": "2025-05-05"
+    },
+    {
+        "titre": "Voyage",
+        "description": "Voyage est un site de simulation d’achat de billets d’avion. Il permet aux utilisateurs de choisir des vols, sélectionner leurs places et simuler le processus complet de réservation, offrant ainsi une expérience réaliste et interactive pour planifier un voyage.",
+        "lienSite": "https://bleudragonviolet.github.io/Voyage/",
+        "lienGithub": "https://github.com/BleuDragonViolet/Voyage",
+        "image": "",
+        "date": "2025-01-31"
+    },
+    {
+        "titre": "Lecteur video",
+        "description": "Lecteur Vidéo est un site web simple qui permet de lire des fichiers vidéo directement depuis le navigateur. Il propose une interface claire et épurée, avec les contrôles de base (lecture, pause, avance rapide, etc.). Parfait pour un usage local ou comme base pour un projet de lecteur multimédia personnalisé.",
+        "lienSite": "https://bleudragonviolet.github.io/Lecteur-video/",
+        "lienGithub": "https://github.com/BleuDragonViolet/Lecteur-video",
+        "image": "",
+        "date": "2025-01-26"
+    },
+    {
+        "titre": "Sword art online",
+        "description": "Sword Art Online Fan Site est un site web créé par un fan de l’anime Sword Art Online. Il sert de vitrine pour partager l’univers de l’anime : personnages, saisons, images, musiques, et autres contenus inspirés de la série. Ce projet met en avant la passion de la communauté SAO à travers un design immersif et une navigation simple.",
+        "lienSite": "https://bleudragonviolet.github.io/Sword-art-online/",
+        "lienGithub": "https://github.com/BleuDragonViolet/Sword-art-online",
+        "image": "https://fr.web.img6.acsta.net/pictures/19/07/09/11/04/5921608.jpg",
+        "date": "2025-01-22"
+    },
+    {
+        "titre": "Bingo",
+        "description": "Bingo est un site web simple qui permet de jouer au jeu classique du Bingo. Idéal pour s’amuser en solo ou entre amis, il génère des grilles aléatoires et peut être utilisé dans un cadre détendu, en ligne ou en présentiel. Léger, rapide et sans prise de tête !",
+        "lienSite": "https://bleudragonviolet.github.io/Bingo/",
+        "lienGithub": "https://github.com/BleuDragonViolet/Bingo",
+        "image": "",
+        "date": "2025-01-19"
+    },
+    {
+        "titre": "Evan Barreiros",
+        "description": "Evan Barreiros est un site web professionnel personnel servant de vitrine pour présenter mon profil, mes compétences et mes projets. Il a pour but de mettre en avant mon parcours, mon savoir-faire et mes réalisations dans un format clair, moderne et accessible. Idéal pour les recruteurs, collaborateurs ou toute personne souhaitant en savoir plus sur mon travail.",
+        "lienSite": "https://bleudragonviolet.github.io/Evan_Barreiros/",
+        "lienGithub": "https://github.com/BleuDragonViolet/Evan_Barreiros",
+        "image": "https://github.com/BleuDragonViolet/Evan_Barreiros/blob/main/ressource/Image/me.jpg?raw=true",
+        "date": "2024-08-28"
+    },
+    {
+        "titre": "Auto-Repair",
+        "description": "Auto-Repair est un site vitrine conçu pour un garage dans un serveur GTA RP. Il ne sert pas à la gestion active en jeu, mais plutôt à présenter ce qu’un garage RP peut proposer : services de réparation, customisation, tarifs, informations sur l’équipe, etc. L’objectif est de donner un aperçu immersif et réaliste d’un garage pour enrichir l’expérience roleplay.",
+        "lienSite": "https://bleudragonviolet.github.io/Auto-Repair/",
+        "lienGithub": "https://github.com/BleuDragonViolet/Auto-Repair",
+        "image": "https://github.com/BleuDragonViolet/Auto-Repair/blob/main/image/logo.png?raw=true",
+        "date": "2024-09-27"
+    },
+    {
+        "titre": "Code",
+        "description": "Ce site est conçu pour vous mettre au défi. Avant d'accéder au contenu, il vous demande de trouver et d’entrer un mot de passe. Saurez-vous deviner le bon mot pour être redirigé ? À vous de jouer !",
+        "lienSite": "https://bleudragonviolet.github.io/Code/",
+        "lienGithub": "https://github.com/BleuDragonViolet/Code",
+        "image": "",
+        "date": "2024-09-13"
+    },
+    {
+        "titre": "Setup Express",
+        "description": "Setup Express est un site web simple et pratique qui permet d’installer rapidement toutes les applications essentielles pour un PC. Il sert de vitrine interactive regroupant une sélection de logiciels indispensables (navigateurs, outils bureautiques, utilitaires, etc.), avec une interface claire et efficace pour guider l’utilisateur dans la configuration d’un nouvel ordinateur.",
+        "lienSite": "https://bleudragonviolet.github.io/Setup-Express/",
+        "lienGithub": "https://github.com/BleuDragonViolet/Setup-Express",
+        "image": "",
+        "date": "2024-11-22"
+    }
 ]

@@ -1,6 +1,9 @@
 // Initialiser EmailJS
 emailjs.init("c0ulvhs7CEBjajqEw");
 
+let currentAccessCode = "";
+let codeExpirationTimeout = null;
+
 const projetsContainer = document.getElementById("projetsContainer");
 const modal = document.getElementById("modal");
 const openModalBtn = document.getElementById("openModal");
@@ -41,24 +44,62 @@ window.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("firstVisitDone", "1");
   });
 
-  chargerProjets(); // Charger depuis l'API
+  chargerProjets();
 });
 
+// Ouverture / Fermeture modals
 openModalBtn.addEventListener("click", () => {
   modal.classList.remove("hidden");
 });
-
 cancelBtn.addEventListener("click", () => {
   modal.classList.add("hidden");
   form.reset();
 });
 
+// Génération et envoi du code unique
+function genererCodeUnique() {
+  return Math.floor(100000 + Math.random() * 900000).toString();
+}
+
+function envoyerCodeParEmail() {
+  currentAccessCode = genererCodeUnique();
+  const now = new Date().toLocaleString();
+
+  if (codeExpirationTimeout) clearTimeout(codeExpirationTimeout);
+  codeExpirationTimeout = setTimeout(() => {
+    currentAccessCode = "";
+    alert("Le code a expiré (30 minutes).");
+  }, 30 * 60 * 1000); // 30 minutes
+
+  sendCodeBtn.disabled = true;
+  sendCodeBtn.textContent = "Code envoyé !";
+  document.getElementById("sendDeleteCode").disabled = true;
+  document.getElementById("sendDeleteCode").textContent = "Code envoyé !";
+
+  emailjs.send("service_29coykj", "template_c5ztfnj", {
+    code: currentAccessCode,
+    date: now
+  }).then(() => {
+    alert("Le code a été envoyé au créateur ! Il est valide pendant 30 minutes.");
+  }).catch(() => {
+    alert("Erreur lors de l’envoi du code.");
+    sendCodeBtn.disabled = false;
+    sendCodeBtn.textContent = "📧 Envoyer un code au créateur";
+    document.getElementById("sendDeleteCode").disabled = false;
+    document.getElementById("sendDeleteCode").textContent = "📧 Envoyer un code au créateur";
+  });
+}
+
+sendCodeBtn.addEventListener("click", envoyerCodeParEmail);
+document.getElementById("sendDeleteCode").addEventListener("click", envoyerCodeParEmail);
+
+// Soumission formulaire ajout
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const code = document.getElementById("codeInput").value.trim();
-  if (!code) {
-    alert("Merci d’entrer le code reçu par mail avant d’ajouter un projet.");
+  if (code !== currentAccessCode) {
+    alert("Code incorrect ou expiré.");
     return;
   }
 
@@ -90,7 +131,7 @@ form.addEventListener("submit", async (e) => {
   }
 });
 
-// 🔃 Remplir la liste déroulante avec les titres
+// Remplir la liste des projets dans la modale suppression
 async function chargerTitresProjets() {
   const res = await fetch('/projets');
   const projets = await res.json();
@@ -104,26 +145,29 @@ async function chargerTitresProjets() {
   });
 }
 
-// 🎯 Gérer l’ouverture/fermeture de la modale de suppression
 document.getElementById('openDeleteModal').addEventListener('click', () => {
   chargerTitresProjets();
   document.getElementById('deleteModal').classList.remove('hidden');
 });
-
 document.getElementById('cancelDelete').addEventListener('click', () => {
   document.getElementById('deleteModal').classList.add('hidden');
 });
 
-// ❌ Envoi de la requête de suppression
+// Soumission suppression
 document.getElementById('deleteForm').addEventListener('submit', async (e) => {
   e.preventDefault();
   const titre = document.getElementById('projectSelect').value;
-  const code = document.getElementById('deleteCodeInput').value;
+  const code = document.getElementById('deleteCodeInput').value.trim();
+
+  if (code !== currentAccessCode) {
+    alert("Code incorrect ou expiré.");
+    return;
+  }
 
   const res = await fetch('/supprimer-projet', {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ titre, code })
+    body: JSON.stringify({ titre })
   });
 
   if (res.ok) {
@@ -131,32 +175,11 @@ document.getElementById('deleteForm').addEventListener('submit', async (e) => {
     document.getElementById('deleteModal').classList.add('hidden');
     location.reload();
   } else {
-    alert('Code incorrect ou projet introuvable');
+    alert('Erreur lors de la suppression.');
   }
 });
 
-
-
-
-sendCodeBtn.addEventListener("click", () => {
-  const code = Math.random().toString(36).substring(2, 8).toUpperCase();
-  const now = new Date().toLocaleString();
-
-  sendCodeBtn.disabled = true;
-  sendCodeBtn.textContent = "Code envoyé !";
-
-  emailjs.send("service_29coykj", "template_c5ztfnj", {
-    code: code,
-    date: now
-  }).then(() => {
-    alert("Le code a été envoyé au créateur !");
-  }).catch(() => {
-    alert("Erreur lors de l’envoi du code.");
-    sendCodeBtn.disabled = false;
-    sendCodeBtn.textContent = "📧 Envoyer un code au créateur";
-  });
-});
-
+// Chargement des projets pour affichage
 async function chargerProjets() {
   projetsContainer.innerHTML = "";
   try {
@@ -219,21 +242,3 @@ function afficherProjets(projets) {
     projetsContainer.appendChild(card);
   });
 }
-
-
-document.getElementById("sendDeleteCode").addEventListener("click", () => {
-  const code = Math.floor(100000 + Math.random() * 900000).toString();
-  sessionStorage.setItem("deleteCode", code);
-
-  emailjs
-    .send("service_2rttx4j", "template_8sphx9c", {
-      to_name: "Créateur",
-      message: `Code de validation pour ajout de projet : ${code}`, // 🔁 même texte que l’ajout
-    })
-    .then(() => {
-      alert("Code envoyé au créateur.");
-    })
-    .catch(() => {
-      alert("Erreur lors de l'envoi du code.");
-    });
-});
