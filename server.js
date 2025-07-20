@@ -38,3 +38,23 @@ app.post("/api/projets", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Serveur démarré sur http://localhost:${PORT}`);
 });
+
+app.delete('/supprimer-projet', (req, res) => {
+  const { titre } = req.body;
+
+  fs.readFile('projets.json', 'utf8', (err, data) => {
+    if (err) return res.status(500).send('Erreur serveur');
+    let projets = JSON.parse(data);
+    const avant = projets.length;
+    projets = projets.filter(p => p.titre !== titre);
+
+    if (projets.length === avant) {
+      return res.status(404).send('Projet non trouvé');
+    }
+
+    fs.writeFile('projets.json', JSON.stringify(projets, null, 2), (err) => {
+      if (err) return res.status(500).send('Erreur lors de la suppression');
+      res.send('Projet supprimé');
+    });
+  });
+});

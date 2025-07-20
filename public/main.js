@@ -90,6 +90,54 @@ form.addEventListener("submit", async (e) => {
   }
 });
 
+// 🔃 Remplir la liste déroulante avec les titres
+async function chargerTitresProjets() {
+  const res = await fetch('/projets');
+  const projets = await res.json();
+  const select = document.getElementById('projectSelect');
+  select.innerHTML = '<option value="" disabled selected>Sélectionne un projet</option>';
+  projets.forEach(p => {
+    const option = document.createElement('option');
+    option.value = p.titre;
+    option.textContent = p.titre;
+    select.appendChild(option);
+  });
+}
+
+// 🎯 Gérer l’ouverture/fermeture de la modale de suppression
+document.getElementById('openDeleteModal').addEventListener('click', () => {
+  chargerTitresProjets();
+  document.getElementById('deleteModal').classList.remove('hidden');
+});
+
+document.getElementById('cancelDelete').addEventListener('click', () => {
+  document.getElementById('deleteModal').classList.add('hidden');
+});
+
+// ❌ Envoi de la requête de suppression
+document.getElementById('deleteForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const titre = document.getElementById('projectSelect').value;
+  const code = document.getElementById('deleteCodeInput').value;
+
+  const res = await fetch('/supprimer-projet', {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ titre, code })
+  });
+
+  if (res.ok) {
+    alert('Projet supprimé avec succès');
+    document.getElementById('deleteModal').classList.add('hidden');
+    location.reload();
+  } else {
+    alert('Code incorrect ou projet introuvable');
+  }
+});
+
+
+
+
 sendCodeBtn.addEventListener("click", () => {
   const code = Math.random().toString(36).substring(2, 8).toUpperCase();
   const now = new Date().toLocaleString();
@@ -171,3 +219,21 @@ function afficherProjets(projets) {
     projetsContainer.appendChild(card);
   });
 }
+
+
+document.getElementById("sendDeleteCode").addEventListener("click", () => {
+  const code = Math.floor(100000 + Math.random() * 900000).toString();
+  sessionStorage.setItem("deleteCode", code);
+
+  emailjs
+    .send("service_2rttx4j", "template_8sphx9c", {
+      to_name: "Créateur",
+      message: `Code de validation pour ajout de projet : ${code}`, // 🔁 même texte que l’ajout
+    })
+    .then(() => {
+      alert("Code envoyé au créateur.");
+    })
+    .catch(() => {
+      alert("Erreur lors de l'envoi du code.");
+    });
+});

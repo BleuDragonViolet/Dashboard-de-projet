@@ -10,25 +10,27 @@
 <body>
   <!-- Pop-up première visite -->
   <div id="firstVisitPopup" class="popup hidden">
-  <div class="popup-content" id="popupStep1">
-    <p>Est-ce ta première visite ?</p>
-    <button id="btnYes">Oui</button>
-    <button id="btnNo">Non</button>
+    <div class="popup-content" id="popupStep1">
+      <p>Est-ce ta première visite ?</p>
+      <button id="btnYes">Oui</button>
+      <button id="btnNo">Non</button>
+    </div>
+    <div class="popup-content hidden" id="popupStep2">
+      <p>
+        Bienvenue sur le Dashboard de projets !<br>
+        Ce site te permet de consulter tous les projets réalisés par son créateur.<br>
+        Il n’est pas possible d’en ajouter, seul le créateur peut le faire.
+      </p>
+      <button id="btnClosePopup">Fermer</button>
+    </div>
   </div>
-  <div class="popup-content hidden" id="popupStep2">
-    <p>
-      Bienvenue sur le Dashboard de projets !<br>
-      Ce site te permet de consulter tous les projets réalisés par son créateur.<br>
-      Il n’est pas possible d’en ajouter, seul le créateur peut le faire.
-    </p>
-    <button id="btnClosePopup">Fermer</button>
-  </div>
-</div>
-
 
   <header>
     <h1>Dashboard de projets</h1>
-    <button id="openModal">➕ Ajouter un projet</button>
+    <div>
+      <button id="openModal">➕ Ajouter un projet</button>
+      <button id="openDeleteModal">🗑️ Supprimer un projet</button>
+    </div>
   </header>
 
   <main>
@@ -53,6 +55,24 @@
         <div class="buttons">
           <button type="submit" id="submitBtn">Ajouter</button>
           <button type="button" id="cancel">Annuler</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal de suppression -->
+  <div id="deleteModal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Supprimer un projet</h2>
+      <form id="deleteForm">
+        <select id="projectSelect" required>
+          <option value="" disabled selected>Sélectionne un projet</option>
+        </select>
+        <input type="text" placeholder="Code d'accès reçu" id="deleteCodeInput" required />
+        <button type="button" id="sendDeleteCode">📧 Envoyer un code au créateur</button>
+        <div class="buttons">
+          <button type="submit">Supprimer</button>
+          <button type="button" id="cancelDelete">Annuler</button>
         </div>
       </form>
     </div>
