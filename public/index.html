@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard de projets</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+</head>
+<body>
+  <!-- Pop-up première visite -->
+  <div id="firstVisitPopup" class="popup hidden">
+  <div class="popup-content" id="popupStep1">
+    <p>Est-ce ta première visite ?</p>
+    <button id="btnYes">Oui</button>
+    <button id="btnNo">Non</button>
+  </div>
+  <div class="popup-content hidden" id="popupStep2">
+    <p>
+      Bienvenue sur le Dashboard de projets !<br>
+      Ce site te permet de consulter tous les projets réalisés par son créateur.<br>
+      Il n’est pas possible d’en ajouter, seul le créateur peut le faire.
+    </p>
+    <button id="btnClosePopup">Fermer</button>
+  </div>
+</div>
+
+
+  <header>
+    <h1>Dashboard de projets</h1>
+    <button id="openModal">➕ Ajouter un projet</button>
+  </header>
+
+  <main>
+    <section id="projetsContainer" class="grid"></section>
+  </main>
+
+  <!-- Modal d'ajout -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Ajouter un projet</h2>
+      <form id="projectForm">
+        <input type="text" placeholder="Titre" id="titre" required />
+        <textarea placeholder="Description" id="description" required></textarea>
+        <input type="url" placeholder="Lien du site" id="lienSite" />
+        <input type="url" placeholder="Lien GitHub" id="lienGithub" />
+        <input type="url" placeholder="Image ou icône (URL)" id="image" />
+        <input type="date" id="date" />
+        <input type="text" placeholder="Code d'accès reçu" id="codeInput" required />
+
+        <button type="button" id="sendCode">📧 Envoyer un code au créateur</button>
+
+        <div class="buttons">
+          <button type="submit" id="submitBtn">Ajouter</button>
+          <button type="button" id="cancel">Annuler</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
